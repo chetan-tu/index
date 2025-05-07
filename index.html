@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Chetan’s Kore.ai Assistant</title>
 </head>
 <body>
   <h2>Chat with My Assistant</h2>
 
-  <script src='https://cdn.jsdelivr.net/npm/kore-web-sdk@11.13.0/dist/umd/kore-web-sdk-umd-chat.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/kore-web-sdk@11.13.0/dist/umd/kore-web-sdk-umd-chat.min.js"></script>
   <script>
-      KoreChatSDK.chatConfig.botOptions.API_KEY_CONFIG.KEY = '06ba181c47c5446fbaa512ef356eb1d1ebd5221c597e4fddb0e83426e2586a12st2d';
-      new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig);
+    window.KoreChatSDK = window.KoreChatSDK || {};
+    KoreChatSDK.chatConfig = {
+      botOptions: {
+        API_KEY_CONFIG: {
+          clientId: "your-client-id", // optional, can be empty string
+          clientSecret: "",           // optional
+          KEY: "06ba181c47c5446fbaa512ef356eb1d1ebd5221c597e4fddb0e83426e2586a12st2d"
+        },
+        botInfo: {
+          name: "ChetGPT",        // Your bot name in Kore.ai
+          env: "inDev"            // Or "production" if published
+        }
+      },
+      koreAPIUrl: "https://bots.kore.ai/api/",
+      JWTUrl: "",  // Optional — leave blank if not using JWT
+      clientId: "",  // Optional — used with JWT
+      clientSecret: "" // Optional — used with JWT
+    };
+
+    new KoreChatSDK.chatWindow().show(KoreChatSDK.chatConfig);
   </script>
 </body>
 </html>
